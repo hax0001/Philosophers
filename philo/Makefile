@@ -2,20 +2,20 @@ NAME = philo
 
 FILES = philo.c \
 		philo_tools.c \
+		free.c \
+		error.c \
+		check.c \
 
 OFILES = $(FILES:.c=.o)
 
 FLAGS = -Wall -Wextra -Werror
 
-CC == CC
+CC = cc
 
 all : $(NAME)
 
 $(NAME) : $(OFILES)
 	$(CC) $(FLAGS) $(OFILES) -o $(NAME)
-
-$(OFILES) :
-	$(CC) $(FLAGS) $(FILES)
 
 clean :
 	rm -rf $(OFILES)

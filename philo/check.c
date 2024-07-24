@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.c                                            :+:      :+:    :+:   */
+/*   check.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nait-bou <nait-bou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/22 17:38:13 by nait-bou          #+#    #+#             */
-/*   Updated: 2024/07/24 13:18:43 by nait-bou         ###   ########.fr       */
+/*   Created: 2024/07/24 12:08:26 by nait-bou          #+#    #+#             */
+/*   Updated: 2024/07/24 13:10:31 by nait-bou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int main(int ac, char **av)
+int	check(char **av, t_data data)
 {
-    t_data  data;
+	int	i;
 
-   memset(&data, 0, sizeof(t_data));
-   if (ac < 5 || ac > 6)
-   {
-        error();
-        free_all(data);
-        return(1);
-   }
-   if (check(av, data) == 1)
-        return (1);
-    
-    return (0);
+	i = 1;
+	while (av[i] != NULL)
+	{
+		if (new_atoi(av[i], data) == (-1))
+			return (1);
+		i++;
+	}
+	return (0);
 }

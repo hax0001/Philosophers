@@ -1,30 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.c                                            :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nait-bou <nait-bou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/22 17:38:13 by nait-bou          #+#    #+#             */
-/*   Updated: 2024/07/24 13:18:43 by nait-bou         ###   ########.fr       */
+/*   Created: 2024/07/24 11:48:16 by nait-bou          #+#    #+#             */
+/*   Updated: 2024/07/24 12:00:15 by nait-bou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int main(int ac, char **av)
+void	error(void)
 {
-    t_data  data;
-
-   memset(&data, 0, sizeof(t_data));
-   if (ac < 5 || ac > 6)
-   {
-        error();
-        free_all(data);
-        return(1);
-   }
-   if (check(av, data) == 1)
-        return (1);
-    
-    return (0);
+	printf("\n ERROR ! \n");
 }
