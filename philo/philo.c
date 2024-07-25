@@ -6,7 +6,7 @@
 /*   By: nait-bou <nait-bou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 17:38:13 by nait-bou          #+#    #+#             */
-/*   Updated: 2024/07/24 13:18:43 by nait-bou         ###   ########.fr       */
+/*   Updated: 2024/07/25 12:32:53 by nait-bou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ int main(int ac, char **av)
    }
    if (check(av, data) == 1)
         return (1);
-    
+    get_info(ac, av, data);
+    if (init_struct(data) == 1)
+        return (1);
     return (0);
 }

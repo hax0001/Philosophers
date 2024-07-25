@@ -6,7 +6,7 @@
 /*   By: nait-bou <nait-bou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 17:48:54 by nait-bou          #+#    #+#             */
-/*   Updated: 2024/07/24 13:16:41 by nait-bou         ###   ########.fr       */
+/*   Updated: 2024/07/25 13:06:15 by nait-bou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ int	sub_atoi(char *str, t_data data)
 		if (*str < '0' || *str > '9')
         {
             error();
-            free_all(data);
             return (-1);
         }
 		r = r * 10 + *(str++) - '0';
@@ -30,7 +29,6 @@ int	sub_atoi(char *str, t_data data)
 	if ((r) > 2147483647 || (r) < -2147483648)
 	{
 		error();
-        free_all(data);
         return (-1);
     }
     return (r);
@@ -47,13 +45,11 @@ int	new_atoi(char *str, t_data data)
 				+ 1) == '\0'))
     {
 		error();
-        free_all(data);
         return (-1);
     }
 	if (*str == '-')
 	{
 		error();
-        free_all(data);
         return (-1);
 	}
 	if (*str == '+')

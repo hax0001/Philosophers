@@ -5,6 +5,8 @@ FILES = philo.c \
 		free.c \
 		error.c \
 		check.c \
+		get_info.c \
+		allocations.c \
 
 OFILES = $(FILES:.c=.o)
 
