@@ -6,13 +6,13 @@
 /*   By: nait-bou <nait-bou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 17:48:54 by nait-bou          #+#    #+#             */
-/*   Updated: 2024/07/25 13:06:15 by nait-bou         ###   ########.fr       */
+/*   Updated: 2024/07/27 17:48:31 by nait-bou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	sub_atoi(char *str, t_data data)
+int	sub_atoi(char *str)
 {
     long r;
 
@@ -34,7 +34,7 @@ int	sub_atoi(char *str, t_data data)
     return (r);
 }
 
-int	new_atoi(char *str, t_data data)
+int	new_atoi(char *str)
 {
 	long	r;
 
@@ -54,7 +54,16 @@ int	new_atoi(char *str, t_data data)
 	}
 	if (*str == '+')
 		str++;
-    r = sub_atoi(str, data);
+    r = sub_atoi(str);
 
 	return (r);
+}
+
+long	long	get_time(void)
+{
+	struct timeval	t_m;
+
+	if (gettimeofday(&t_m, NULL) == -1)
+		ft_error();
+	return ((t_m.tv_sec * 1000) + (t_m.tv_usec / 1000));
 }

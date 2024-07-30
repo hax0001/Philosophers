@@ -6,20 +6,20 @@
 /*   By: nait-bou <nait-bou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 12:08:26 by nait-bou          #+#    #+#             */
-/*   Updated: 2024/07/24 13:10:31 by nait-bou         ###   ########.fr       */
+/*   Updated: 2024/07/27 16:08:26 by nait-bou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	check(char **av, t_data data)
+int	check(char **av)
 {
 	int	i;
 
 	i = 1;
 	while (av[i] != NULL)
 	{
-		if (new_atoi(av[i], data) == (-1))
+		if (new_atoi(av[i]) == (-1))
 			return (1);
 		i++;
 	}
