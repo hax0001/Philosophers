@@ -6,7 +6,7 @@
 /*   By: nait-bou <nait-bou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 17:38:17 by nait-bou          #+#    #+#             */
-/*   Updated: 2024/07/30 11:24:55 by nait-bou         ###   ########.fr       */
+/*   Updated: 2024/07/31 20:23:32 by nait-bou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ typedef struct s_data
     int             t_sleep;
     int             n_to_eat;
     int             die;
+    long long       current;
     
 }t_data;
 
@@ -61,5 +62,13 @@ int	check(char **av);
 void    get_info(int ac, char **str, t_data *data);
 int	init_struct(t_data *data);
 long	long	get_time(void);
+void	philo(t_data *dat);
+void	start(void *arg);
+void	check_death(t_philo *ph);
+void	t_eat(t_philo *philo);
+void	print_state(char *str, t_philo *philo);
+void	ft_usleep(int tie);
+void	t_sleep(t_philo *philo);
+void    t_think(t_philo *philo);
 
 #endif

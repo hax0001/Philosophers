@@ -6,7 +6,7 @@
 /*   By: nait-bou <nait-bou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 17:48:54 by nait-bou          #+#    #+#             */
-/*   Updated: 2024/07/27 17:48:31 by nait-bou         ###   ########.fr       */
+/*   Updated: 2024/07/31 20:09:44 by nait-bou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,4 +66,20 @@ long	long	get_time(void)
 	if (gettimeofday(&t_m, NULL) == -1)
 		ft_error();
 	return ((t_m.tv_sec * 1000) + (t_m.tv_usec / 1000));
+}
+
+void	ft_usleep(int tie)
+{
+	long long	t;
+
+	t = get_time();
+	while (get_time() - t < (long int)tie)
+		usleep(10);
+}
+
+void	print_state(char *str, t_philo *philo)
+{
+	pthread_mutex_lock(&philo->data->mutex);
+	printf("%lld %d %s\n", get_time() - philo->data->current, philo->num, str);
+	pthread_mutex_unlock(&philo->data->mutex);
 }

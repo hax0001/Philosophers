@@ -1,6 +1,7 @@
 NAME = philo
 
 FILES = philo.c \
+		main.c \
 		philo_tools.c \
 		free.c \
 		error.c \
