@@ -6,7 +6,7 @@
 /*   By: nait-bou <nait-bou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 12:23:05 by nait-bou          #+#    #+#             */
-/*   Updated: 2024/07/27 17:42:17 by nait-bou         ###   ########.fr       */
+/*   Updated: 2024/08/01 13:10:55 by nait-bou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ int	init_struct(t_data *data)
 	if (!data->philo || !data->fork || !data->last_eat)
 	{
 		error();
-        free_all(data);
-        return (1);
+		free_all(data);
+		return (1);
 	}
 	while (i < data->n_philo)
 	{

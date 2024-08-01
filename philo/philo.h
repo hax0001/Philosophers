@@ -6,7 +6,7 @@
 /*   By: nait-bou <nait-bou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 17:38:17 by nait-bou          #+#    #+#             */
-/*   Updated: 2024/07/31 20:23:32 by nait-bou         ###   ########.fr       */
+/*   Updated: 2024/08/01 13:02:00 by nait-bou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,6 @@
 # include <pthread.h>
 
 
-#define RED     "\x1b[31m"
-#define GREEN   "\x1b[32m"
-#define RESET   "\x1b[0m"
-#define BLUE    "\x1b[34m"
-#define YELLOW  "\x1b[33m"
 
 typedef struct philo
 {
@@ -63,7 +58,7 @@ void    get_info(int ac, char **str, t_data *data);
 int	init_struct(t_data *data);
 long	long	get_time(void);
 void	philo(t_data *dat);
-void	start(void *arg);
+void	*start(void *arg);
 void	check_death(t_philo *ph);
 void	t_eat(t_philo *philo);
 void	print_state(char *str, t_philo *philo);

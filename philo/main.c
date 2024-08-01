@@ -6,7 +6,7 @@
 /*   By: nait-bou <nait-bou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 17:38:13 by nait-bou          #+#    #+#             */
-/*   Updated: 2024/07/31 20:23:24 by nait-bou         ###   ########.fr       */
+/*   Updated: 2024/08/01 10:56:46 by nait-bou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void    t_think(t_philo *philo)
 {
-    
+	print_state("is thinking ", philo);	
 }
 
 int main(int ac, char **av)
@@ -31,6 +31,6 @@ int main(int ac, char **av)
     get_info(ac, av, &data);
     if (init_struct(&data) == 1)
         return (1);
-    
+    philo(&data);
     return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: nait-bou <nait-bou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 17:48:54 by nait-bou          #+#    #+#             */
-/*   Updated: 2024/07/31 20:09:44 by nait-bou         ###   ########.fr       */
+/*   Updated: 2024/08/01 13:13:51 by nait-bou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,24 @@
 
 int	sub_atoi(char *str)
 {
-    long r;
+	long r;
 
-    r = 0;
-    while (*str)
+	r = 0;
+	while (*str)
 	{
 		if (*str < '0' || *str > '9')
-        {
-            error();
-            return (-1);
-        }
+		{
+			error();
+			return (-1);
+		}
 		r = r * 10 + *(str++) - '0';
 	}
 	if ((r) > 2147483647 || (r) < -2147483648)
 	{
 		error();
-        return (-1);
-    }
-    return (r);
+		return (-1);
+	}
+	return (r);
 }
 
 int	new_atoi(char *str)
@@ -41,11 +41,10 @@ int	new_atoi(char *str)
 	r = 0;
 	while (*str == 32 || (*str >= 9 && *str <= 13))
 		str++;
-	if ((*str == '-' && *(str + 1) == '\0') || (*str == '+' && *(str
-				+ 1) == '\0'))
-    {
+	if ((*str == '-' && *(str + 1) == '\0') || (*str == '+' && *(str + 1) == '\0'))
+	{
 		error();
-        return (-1);
+		return (-1);
     }
 	if (*str == '-')
 	{
@@ -64,7 +63,7 @@ long	long	get_time(void)
 	struct timeval	t_m;
 
 	if (gettimeofday(&t_m, NULL) == -1)
-		ft_error();
+		error();
 	return ((t_m.tv_sec * 1000) + (t_m.tv_usec / 1000));
 }
 
