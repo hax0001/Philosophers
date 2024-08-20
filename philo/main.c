@@ -6,15 +6,18 @@
 /*   By: nait-bou <nait-bou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 17:38:13 by nait-bou          #+#    #+#             */
-/*   Updated: 2024/08/01 10:56:46 by nait-bou         ###   ########.fr       */
+/*   Updated: 2024/08/20 12:53:32 by nait-bou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void    t_think(t_philo *philo)
+int    t_think(t_philo *philo)
 {
-	print_state("is thinking ", philo);	
+	if (print_state("is thinking", philo))
+        return (1);
+    ft_usleep(1, philo);
+    return (0);
 }
 
 int main(int ac, char **av)
@@ -32,5 +35,6 @@ int main(int ac, char **av)
     if (init_struct(&data) == 1)
         return (1);
     philo(&data);
+    free_all(&data);
     return (0);
 }

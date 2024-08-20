@@ -11,14 +11,14 @@ FILES = philo.c \
 
 OFILES = $(FILES:.c=.o)
 
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror 
 
 CC = cc
 
 all : $(NAME)
 
 $(NAME) : $(OFILES)
-	$(CC) $(FLAGS) $(OFILES) -o $(NAME)
+	$(CC) -g $(FLAGS) $(OFILES) -o $(NAME) -lpthread
 
 clean :
 	rm -rf $(OFILES)

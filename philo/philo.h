@@ -6,7 +6,7 @@
 /*   By: nait-bou <nait-bou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 17:38:17 by nait-bou          #+#    #+#             */
-/*   Updated: 2024/08/01 13:02:00 by nait-bou         ###   ########.fr       */
+/*   Updated: 2024/08/20 11:59:32 by nait-bou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,13 @@
 # include <string.h>
 # include <sys/time.h>
 # include <pthread.h>
+
+#define RED     "\x1b[31m"
+#define GREEN   "\x1b[32m"
+#define RESET   "\x1b[0m"
+#define BLUE    "\x1b[34m"
+#define YELLOW  "\x1b[33m"
+
 
 
 
@@ -36,6 +43,9 @@ typedef struct s_data
     t_philo         *philo;
     pthread_mutex_t *fork;
     pthread_mutex_t mutex;
+    pthread_mutex_t mutex1;
+    pthread_mutex_t mutex2;
+    pthread_mutex_t mutex3;
     long long       *last_eat;
     int             n_philo;
     int             t_die;
@@ -44,6 +54,8 @@ typedef struct s_data
     int             n_to_eat;
     int             die;
     long long       current;
+    long long       tmp1;
+    int             tmp2;
     
 }t_data;
 
@@ -60,10 +72,10 @@ long	long	get_time(void);
 void	philo(t_data *dat);
 void	*start(void *arg);
 void	check_death(t_philo *ph);
-void	t_eat(t_philo *philo);
-void	print_state(char *str, t_philo *philo);
-void	ft_usleep(int tie);
-void	t_sleep(t_philo *philo);
-void    t_think(t_philo *philo);
+int 	t_eat(t_philo *philo);
+int 	print_state(char *str, t_philo *philo);
+void	ft_usleep(int tie, t_philo *philo);
+int 	t_sleep(t_philo *philo);
+int     t_think(t_philo *philo);
 
 #endif
