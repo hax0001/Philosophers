@@ -1,16 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo_tools.c                                      :+:      :+:    :+:   */
+/*   pars.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nait-bou <nait-bou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/22 17:48:54 by nait-bou          #+#    #+#             */
-/*   Updated: 2024/08/20 12:04:14 by nait-bou         ###   ########.fr       */
+/*   Created: 2024/08/24 19:01:53 by nait-bou          #+#    #+#             */
+/*   Updated: 2024/08/24 19:01:56 by nait-bou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+int	check(char **av, 	int	*number_of_philosophers)
+{
+	int	i;
+
+	i = 1;
+	while (av[i] != NULL)
+	{
+		if (new_atoi(av[i]) == (-1))
+			return (1);
+		i++;
+	}
+	*number_of_philosophers = new_atoi(av[1]);
+	if (*number_of_philosophers == 0)
+		return (error() ,1);
+	return (0);
+}
 
 int	sub_atoi(char *str)
 {
@@ -58,40 +75,8 @@ int	new_atoi(char *str)
 	return (r);
 }
 
-long	long	get_time(void)
+void	error(void)
 {
-	struct timeval	t_m;
-
-	if (gettimeofday(&t_m, NULL) == -1)
-		error();
-	return ((t_m.tv_sec * 1000) + (t_m.tv_usec / 1000));
-}
-void	ft_usleep(int tie, t_philo *philo)
-{
-	long long	t;
-	int tmp;
-
-	pthread_mutex_lock(&philo->data->mutex3);
-	tmp = philo->data->die;
-	pthread_mutex_unlock(&philo->data->mutex3);
-	t = get_time();
-	while (get_time() - t < (long int)tie && tmp != 1)
-		usleep(50);
+	printf("\n ERROR ! \n");
 }
 
-int	print_state(char *str, t_philo *philo)
-{
-	int tmp;
-	pthread_mutex_lock(&philo->data->mutex);
-	pthread_mutex_lock(&philo->data->mutex3);
-	tmp = philo->data->die;
-	pthread_mutex_unlock(&philo->data->mutex3);
-	if (tmp)
-	{
-		pthread_mutex_unlock(&philo->data->mutex);
-		return (1);
-	}
-	printf("%lld %d %s\n", get_time() - philo->data->current, philo->num, str);
-	pthread_mutex_unlock(&philo->data->mutex);
-	return (0);
-}

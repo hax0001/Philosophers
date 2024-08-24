@@ -1,29 +1,20 @@
 NAME = philo
 
-FILES = philo.c \
-		main.c \
-		philo_tools.c \
-		free.c \
-		error.c \
-		check.c \
-		get_info.c \
-		allocations.c \
+CC = gcc
 
-OFILES = $(FILES:.c=.o)
+CFLAGS = -Wall -Wextra -Werror -pthread 
 
-FLAGS = -Wall -Wextra -Werror 
+SOURCE_FILES = philo.c monitor.c routine.c time.c pars.c main.c create_join_threads.c free_destroy_data.c initialize_data.c 
 
-CC = cc
+OBJECT_FILES = $(SOURCE_FILES:.c=.o)
 
-all : $(NAME)
+all:$(NAME)
 
-$(NAME) : $(OFILES)
-	$(CC) -g $(FLAGS) $(OFILES) -o $(NAME) -lpthread
+$(NAME): $(OBJECT_FILES)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJECT_FILES) 
 
-clean :
-	rm -rf $(OFILES)
-
-fclean : clean
-	rm -rf $(NAME)
-
-re : fclean all
+clean:
+	@rm -f $(OBJECT_FILES)
+fclean: clean
+	@rm -f $(NAME)
+re: fclean all

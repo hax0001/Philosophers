@@ -5,77 +5,63 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: nait-bou <nait-bou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/22 17:38:17 by nait-bou          #+#    #+#             */
-/*   Updated: 2024/08/20 11:59:32 by nait-bou         ###   ########.fr       */
+/*   Created: 2024/08/24 19:02:15 by nait-bou          #+#    #+#             */
+/*   Updated: 2024/08/24 19:02:37 by nait-bou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHILO_H
-# define PHILO_H
+#include <pthread.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <sys/time.h>
+#include <unistd.h>
 
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
-# include <string.h>
-# include <sys/time.h>
-# include <pthread.h>
-
-#define RED     "\x1b[31m"
-#define GREEN   "\x1b[32m"
-#define RESET   "\x1b[0m"
-#define BLUE    "\x1b[34m"
-#define YELLOW  "\x1b[33m"
-
-
-
-
-typedef struct philo
+typedef struct t_list
 {
-    struct s_data      *data;    
-    int     num;
-    int     flag;
-    pthread_t   ph;
-    
-}t_philo;
+	pthread_t		philo;
+	pthread_mutex_t	forks;
+	pthread_mutex_t	*left_fork;
+	pthread_mutex_t	*right_fork;
+	pthread_mutex_t	meal_mutex;
+	pthread_mutex_t	flag_mutex;
+	pthread_mutex_t	curent_mutex;
+	pthread_mutex_t	kla_mutex;
+	pthread_mutex_t	*mutex_0;
+	pthread_mutex_t	*mutex_1;
+	pthread_mutex_t	*mutex_2;
+	pthread_mutex_t	*mutex_3;
+	int				id;
+	long			last_meal;
+	int				time_to_die;
+	int				time_to_eat;
+	int				time_to_sleep;
+	int				n_of_philos;
+	int				flag;
+	long			curent;
+	int				n_of_meals;
+	int				kla;
+}					t_data;
 
-typedef struct s_data
-{
-    t_philo         *philo;
-    pthread_mutex_t *fork;
-    pthread_mutex_t mutex;
-    pthread_mutex_t mutex1;
-    pthread_mutex_t mutex2;
-    pthread_mutex_t mutex3;
-    long long       *last_eat;
-    int             n_philo;
-    int             t_die;
-    int             t_eat;
-    int             t_sleep;
-    int             n_to_eat;
-    int             die;
-    long long       current;
-    long long       tmp1;
-    int             tmp2;
-    
-}t_data;
-
-
-
+int		check(char **av, 	int	*number_of_philosophers);
+int		sub_atoi(char *str);
+int		new_atoi(char *str);
 void	error(void);
-void	free_all(t_data *data);
-int	new_atoi(char *str);
-int	sub_atoi(char *str);
-int	check(char **av);
-void    get_info(int ac, char **str, t_data *data);
-int	init_struct(t_data *data);
-long	long	get_time(void);
-void	philo(t_data *dat);
-void	*start(void *arg);
-void	check_death(t_philo *ph);
-int 	t_eat(t_philo *philo);
-int 	print_state(char *str, t_philo *philo);
-void	ft_usleep(int tie, t_philo *philo);
-int 	t_sleep(t_philo *philo);
-int     t_think(t_philo *philo);
-
-#endif
+void	*monitoring_function(void *arg);
+long	get_current_time_in_milliseconds(void);
+int		eating(t_data *data);
+int		sleeping(t_data *data);
+int		thinking(t_data *data);
+int		take_left_fork(t_data *data, int check);
+int		take_right_fork(t_data *data, int check);
+int		sleep_function(t_data *data, int time);
+int		check_death(t_data *data);
+long	get_current_time_in_milliseconds(void);
+int		sleep_function(t_data *data, int time);
+int		check_death(t_data *data);
+void	put_down_forks(t_data *data);
+int		initialize_data(t_data *data, int number_of_philosophers, char **av);
+void	initialize_mutexes(t_data *data, int number_of_philosophers);
+void	create_and_join_threads(t_data *data, int number_of_philosophers);
+void	initialize_mutexes_2(t_data *data, int number_of_philosophers);
+void	free_and_destroy_data(t_data *data, int n);
+void	*action_function(void *arg);
