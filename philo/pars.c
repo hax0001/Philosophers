@@ -12,7 +12,7 @@
 
 #include "philo.h"
 
-int	check(char **av, 	int	*number_of_philosophers)
+int	check(char **av, int *number_of_philosophers)
 {
 	int	i;
 
@@ -25,13 +25,13 @@ int	check(char **av, 	int	*number_of_philosophers)
 	}
 	*number_of_philosophers = new_atoi(av[1]);
 	if (*number_of_philosophers == 0)
-		return (error() ,1);
+		return (error(), 1);
 	return (0);
 }
 
 int	sub_atoi(char *str)
 {
-	long r;
+	long	r;
 
 	r = 0;
 	while (*str)
@@ -58,20 +58,16 @@ int	new_atoi(char *str)
 	r = 0;
 	while (*str == 32 || (*str >= 9 && *str <= 13))
 		str++;
-	if ((*str == '-' && *(str + 1) == '\0') || (*str == '+' && *(str + 1) == '\0'))
-	{
-		error();
-		return (-1);
-    }
+	if ((*str == '-' && *(str + 1) == '\0')
+		|| (*str == '+' && *(str + 1) == '\0'))
+		return (error(), -1);
 	if (*str == '-')
-	{
-		error();
-        return (-1);
-	}
+		return (error(), -1);
 	if (*str == '+')
+	{
 		str++;
-    r = sub_atoi(str);
-
+	}
+	r = sub_atoi(str);
 	return (r);
 }
 
@@ -79,4 +75,3 @@ void	error(void)
 {
 	printf("\n ERROR ! \n");
 }
-

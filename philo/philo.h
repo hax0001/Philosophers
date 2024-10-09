@@ -42,7 +42,7 @@ typedef struct t_list
 	int				kla;
 }					t_data;
 
-int		check(char **av, 	int	*number_of_philosophers);
+int		check(char **av, int *number_of_philosophers);
 int		sub_atoi(char *str);
 int		new_atoi(char *str);
 void	error(void);

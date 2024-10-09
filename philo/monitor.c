@@ -53,7 +53,7 @@ void	philo_death_action(t_data *data, int i, int n)
 	res = ((get_current_time_in_milliseconds()) - (data[i].curent));
 	pthread_mutex_unlock(&data[i].curent_mutex);
 	usleep(3000);
-	printf( "%ld %d is died\n" , res, i + 1);
+	printf("%ld %d is died\n", res, i + 1);
 }
 
 void	norm(t_data *data, int *flag, int *meal, int i)

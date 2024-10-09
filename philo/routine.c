@@ -26,7 +26,7 @@ int	eating(t_data *data)
 		return (1);
 	}
 	curent_time = (get_current_time_in_milliseconds() - data->curent);
-	printf( "%ld %d is eating\n" , curent_time, data->id);
+	printf("%ld %d is eating\n", curent_time, data->id);
 	pthread_mutex_unlock(data->mutex_0);
 	pthread_mutex_lock(&data->meal_mutex);
 	data->last_meal = get_current_time_in_milliseconds();
@@ -52,7 +52,7 @@ int	sleeping(t_data *data)
 		return (1);
 	}
 	curent_time = (get_current_time_in_milliseconds() - data->curent);
-	printf( "%ld %d is sleeping\n" , curent_time, data->id);
+	printf("%ld %d is sleeping\n", curent_time, data->id);
 	pthread_mutex_unlock(data->mutex_1);
 	if (sleep_function(data, data->time_to_sleep) == 1)
 		return (1);
@@ -71,7 +71,7 @@ int	thinking(t_data *data)
 		return (1);
 	}
 	curent_time = (get_current_time_in_milliseconds() - data->curent);
-	printf( "%ld %d is thinking\n" , curent_time, data->id);
+	printf("%ld %d is thinking\n", curent_time, data->id);
 	pthread_mutex_unlock(data->mutex_2);
 	return (0);
 }
@@ -96,7 +96,7 @@ int	take_left_fork(t_data *data, int check)
 		return (1);
 	}
 	curent_time = (get_current_time_in_milliseconds() - data->curent);
-	printf( "%ld %d has taken a fork\n" , curent_time, data->id);
+	printf("%ld %d has taken a fork\n", curent_time, data->id);
 	return (0);
 }
 
@@ -122,7 +122,7 @@ int	take_right_fork(t_data *data, int check)
 		return (1);
 	}
 	curent_time = (get_current_time_in_milliseconds() - data->curent);
-	printf( "%ld %d has taken a fork\n" , curent_time,
+	printf("%ld %d has taken a fork\n", curent_time,
 		data->id);
 	return (0);
 }

@@ -12,15 +12,15 @@
 
 #include "philo.h"
 
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
-	t_data *data;
-	int number_of_philosophers;
+	t_data	*data;
+	int		number_of_philosophers;
 
 	if (ac < 5 || ac > 6)
 	{
-        error();
-        return(1);
+		error();
+		return (1);
 	}
 	if (check(av, &number_of_philosophers) == 1)
 		return (1);
